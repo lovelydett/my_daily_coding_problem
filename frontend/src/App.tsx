@@ -8,8 +8,7 @@ import React from "react";
 import { Layout } from "antd";
 
 const cssBackground: React.CSSProperties = {
-    // backgroundImage: "url('/img/bg.jpg')",
-    backgroundColor: "#FFB6B9",
+    backgroundImage: "url('/img/bg.jpg')",
     top: 0,
     left: 0,
     height: "100%",
