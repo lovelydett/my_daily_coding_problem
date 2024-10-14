@@ -1,0 +1,21 @@
+html, body, .App {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    background-image: url('../../public/img/bg.jpg');
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    z-index: -1;
+}
+
+.pagecontent {
+    z-index: 1;
+}

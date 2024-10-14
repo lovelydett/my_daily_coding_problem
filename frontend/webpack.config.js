@@ -8,7 +8,10 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js"],
+        extensions: [".ts", ".tsx", ".js", ".jsx", ".css"],
+        alias: {
+            antd: path.resolve(__dirname, "node_modules/antd"),
+        },
     },
     module: {
         rules: [
@@ -16,6 +19,29 @@ module.exports = {
                 test: /\.tsx?$/,
                 use: "ts-loader",
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.module.css$/,
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: true, // Enable CSS Modules
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[path][name].[ext]",
+                        },
+                    },
+                ],
             },
         ],
     },
