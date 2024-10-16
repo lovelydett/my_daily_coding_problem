@@ -8,6 +8,9 @@ import Koa from "koa";
 import Router from "koa-router";
 import KoaLogger from "koa-logger";
 
+// The routers of sub applications
+import { router as problemsRouter } from "./problems";
+
 // The main Koa2 application
 const app = new Koa();
 app.use(KoaLogger());
@@ -19,5 +22,9 @@ router.get("/sample", async (ctx, next) => {
   ctx.body = "Testing the sample route";
 });
 
+// Incorporate the sub routers
+router.use("/problems", problemsRouter.routes());
+
 app.use(router.routes());
+app.use(router.allowedMethods());
 export { app, router };
