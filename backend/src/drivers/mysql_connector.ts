@@ -27,11 +27,18 @@ class MySQLConnector {
         // Empty constructor
     }
 
-    public async executeQuery<T = any>(query: string, params?: (number | string)[]): Promise<T[]> {
+    public async executeQuery<T = any>(
+        query: string,
+        params?: (number | string)[]
+    ): Promise<T[]> {
         if (!this._connection) {
             // In case not in a transaction, get a new connection for this query
             this._connection = await pool.getConnection();
         }
+
+        const [_, results] = await this._connection.query(query, params || []);
+
+        return results as T[];
     }
 }
 
